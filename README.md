@@ -14,7 +14,7 @@ The T2T internship assignment asks the team to redesign and develop the National
 
 The learning goal is to practise the end-to-end workflow of a modern UX engineer: understanding requirements, exploring user experiences, making design decisions, implementing a React prototype, checking its behaviour and documenting the process.
 
-Submission materials include a Medium-ready case study, design work, AI-assistance references and a hosted React application. These deliverables have separate completion and review statuses; hosting the application does not mean that the native Figma prototype is complete.
+Submission materials include a Medium-ready case study, design work, AI-assistance references and a hosted React application. See the [final submission package](submission/README.md) for the case study, audit, research, presentation, demo guide and actual verification boundaries. Deliverables have separate completion statuses.
 
 ## 3. Objectives
 
@@ -72,6 +72,10 @@ The repository includes starter infrastructure and additional dependencies. Thei
 - **Hosted prototype:** [Open FuelPass 2.0](https://fuelpass-2-0.shaffronwazny.workers.dev)
 - **GitHub repository:** [WAZNY-HS/FuelPass-2.0](https://github.com/WAZNY-HS/FuelPass-2.0)
 - **Hosting platform:** Cloudflare Workers
+- **Figma design file:** [Current Group C file](https://www.figma.com/design/4yt80npyfAzcukprbG33bf/Fuel-Pass-%E2%80%93-Editable-Figma-Prototype)
+- **Final submission:** [Package index and completion checklist](submission/README.md)
+
+The hosted URL is the team's current deployment. The final documentation audit could not open it through its web tool; a fresh browser check is pending. Earlier recorded browser checks covered the previous hosting address. The Figma file is partially editable; a verified playback link is still needed.
 
 Use the demo credentials below. Do not enter real NIC numbers, telephone numbers or vehicle records.
 
@@ -175,24 +179,26 @@ All role views use one in-memory ledger and the localStorage key `group-c-fuel-d
 
 ## 11. AI-Assisted Workflow
 
-Group C used AI tools, including ChatGPT, as productivity and support tools within the team's workflow. Assistance covered brainstorming and ideation, UX/UI exploration, requirement analysis, content refinement, technical guidance, code generation and improvement, debugging, and documentation.
+Group C used AI tools, including ChatGPT, as productivity and support tools within the team's workflow. Assistance covered brainstorming and ideation, UX/UI exploration, requirement analysis, content refinement, technical guidance, code generation and improvement, debugging, documentation and deployment guidance.
 
 The team reviewed and refined AI suggestions, made project and design decisions, tested the prototype, worked with the source code, configured the development environment, used Git and GitHub, and deployed and verified the application. AI-assisted outputs formed part of this process alongside the team's practical work and review.
 
-This describes the collective workflow. Individual task ownership should be recorded from actual contributions. Team prototype checks are distinct from formal participant research; no interviews or participant usability findings are claimed here.
+This describes the collective workflow. Primary responsibility areas below were supplied by the team and should be confirmed by each member. Team prototype checks are distinct from formal participant research; no interviews or participant usability findings are claimed here.
 
 ## 12. Team Members
 
 **Programme:** Theory to Trade (T2T) Internship  
 **Group:** Group C
 
-| Team member | Student ID |
-| --- | --- |
-| Shaffron Wazny | T2T-B4-26-007 |
-| K.R.F. Nooha | T2T-B4-26-009 |
-| M.Y.F. Zahra | T2T-B4-26-012 |
+| Team member | Student ID | Primary responsibility area |
+| --- | --- | --- |
+| Shaffron Wazny | T2T-B4-26-007 | Technical implementation, integration and deployment |
+| K.R.F. Nooha | T2T-B4-26-009 | UX research and case-study documentation |
+| M.Y.F. Zahra | T2T-B4-26-012 | UI/UX design and Figma |
 
-Student IDs are included here for assignment attribution. This README is public in the repository; the application interface does not display these IDs. No individual roles are assigned in this document.
+Ideation, requirement discussions, design/prototype review, testing, refinement and final presentation/submission preparation are shared responsibilities. These are team-declared coordination areas, not independent ownership or proof that every associated artefact is complete. See the [full contribution statement](submission/contributions-and-ai.md).
+
+Student IDs are included here for assignment attribution. This README is public in the repository; the application interface does not display these IDs.
 
 ## 13. Current Prototype Limitations
 
@@ -203,7 +209,7 @@ Student IDs are included here for assignment attribution. This README is public 
 - **Audit limits:** Audit text is reconstructed from transactions, not an independent, immutable or tamper-resistant event log. The seeded review flag is not evidence of fraud.
 - **Language and accessibility review:** Core controls support English, Sinhala and Tamil. Sinhala/Tamil translations remain drafts requiring fluent-speaker review; some supporting and audit prose remains English. Broader keyboard, screen-reader, device and accessibility testing is still needed.
 - **Scope:** Full citizen onboarding, real vehicle registration, a notifications centre, a station finder, quota transfer/request, payments and separate operator login are not implemented. Help explains demo registration using the supplied fictional vehicles.
-- **Figma status:** Native Figma creation and verification were blocked by the connected account's Starter-plan tool limit during preparation. The separately supplied editable import plugin has not been executed or verified in Figma and must not be represented as a completed native prototype.
+- **Figma status:** The current file was structurally inspected on 14 September 2026. It contains a native editable sign-in screen, but several other core screen frames expose only image-labelled layers. Full native editability, Auto Layout/component usage, prototype connections and duplication permissions remain to be completed or verified. The supplied deep-link node 21:66 was not found; use the file-level link above. See the [audit](submission/final-audit.md) for node-level evidence.
 - **Research and validation:** No user interviews, formal participant usability results, official approvals or national service improvements are claimed. Refer to the submission materials for research sources, actual verification evidence and remaining review tasks.
 
 A production service would require server-authoritative transactions, authentication and role authorization, official integration agreements, privacy review, secure OTP delivery and rate limiting, concurrency and idempotency controls, reliable audit storage, monitoring, backups, and further accessibility and user testing. No offline dispensing is supported.
