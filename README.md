@@ -1,62 +1,116 @@
-# Fuel Pass proposal prototype
+# Sri Lankan National Fuel Pass Redesign Proposal
 
-T2T Internship · Group C
+**Theory to Trade (T2T) Internship · Group C**
 
-- Shaffron Wazny — Student ID: T2T-B4-26-007
-- K.R.F.Nooha — Student ID: T2T-B4-26-009
-- M.Y.F.Zahra — Student ID: T2T-B4-26-012
+## 1. Project Overview
 
-AI-assisted assignment prototype for discussion with the Ceylon Petroleum Corporation. No official endorsement. Individual contributions must be completed by the team; none are attributed here. Student IDs are present only in this source README and private submission documents, not in app content or public assets.
+This is Group C's UI/UX and software prototype project exploring a clearer National Fuel Pass experience for Sri Lanka. It connects motorists, station attendants and administrators through a demonstration of allowance checking, QR pass presentation, fuel issuance and transaction review.
 
-## Setup
+The project was developed through an AI-assisted team workflow. It uses fictional records and illustrative allowances and is a proposal for discussion, not an operational government service.
 
-Requires Node 22.13 or newer and pnpm (use the pinned packageManager in package.json). No API keys, paid services or backend accounts are needed for the demonstration.
+## 2. Assignment Context
+
+The T2T internship assignment asks the team to redesign and develop the National Fuel Pass as a proposal prototype for the Director Board of the Ceylon Petroleum Corporation.
+
+The learning goal is to practise the end-to-end workflow of a modern UX engineer: understanding requirements, exploring user experiences, making design decisions, implementing a React prototype, checking its behaviour and documenting the process.
+
+Submission materials include a Medium-ready case study, design work, AI-assistance references and a hosted React application. These deliverables have separate completion and review statuses; hosting the application does not mean that the native Figma prototype is complete.
+
+## 3. Objectives
+
+- Make remaining fuel allowance easy to understand.
+- Connect pass validation, dispensing confirmation and transaction history.
+- Provide clear validation messages and recovery paths.
+- Support mobile layouts for motorists and attendants and a wider administrative view.
+- Provide English, Sinhala and Tamil core interface options.
+- Demonstrate a repeatable workflow using sample data without collecting personal records.
+
+## 4. Key Features
+
+- Simulated OTP sign-in, code resend and expiry.
+- Selection between two fictional vehicles.
+- Dashboard showing remaining allowance, used litres and illustrative allocation.
+- QR passes encoding fictional pass identifiers.
+- Transaction history and an empty-history state.
+- Simulated scanning and manual pass entry.
+- Litre validation, transaction review, confirmation and receipt.
+- A shared browser-local ledger that updates all three role views.
+- Duplicate transaction checks and simulated network-interruption recovery.
+- Administrative totals, station filtering, a seeded review flag and reconstructed audit details.
+- Demo reset, sign-out, help and a browser-storage fallback warning.
+
+The interface uses navy `#102D43`, teal `#087F75`, background `#F3F7FA` and borders `#D8E3E9`. Typography uses Arial with available Sinhala/Tamil font fallbacks. Primary controls have a 48px minimum height, with visible keyboard-focus indicators and labelled inputs.
+
+## 5. User Roles
+
+| Role | Demonstrated tasks |
+| --- | --- |
+| Citizen / Motorist | Use demo OTP, select a vehicle, check allowance, present a QR pass and review history |
+| Station Operator / Attendant | Simulate a scan or enter a pass, validate litres, review and confirm dispensing, and view a receipt |
+| Administrator | Inspect sample totals, filter station activity and review transaction details |
+
+The role selector is for demonstration. It does not implement secure role-based authorization or separate operator and administrator accounts.
+
+## 6. Technology Stack
+
+| Technology | Purpose |
+| --- | --- |
+| React 19 and TypeScript | Interface components, state and typed transaction logic |
+| Vinext and Vite | Application development and build tooling |
+| Tailwind CSS and custom CSS | Styling and responsive layouts |
+| Reusable UI primitives | Buttons, tabs and switches |
+| Lucide React | Interface icons |
+| Browser localStorage | Persistence of fictional transactions in the current browser |
+| QR SVG assets | Encoding of fictional pass identifiers |
+| Cloudflare Workers and Wrangler | Hosting and local production-runtime tooling |
+| Git and GitHub | Source control and team repository |
+
+The repository includes starter infrastructure and additional dependencies. Their presence does not imply that the demo uses a production database or every bundled capability.
+
+## 7. Live Prototype
+
+- **Hosted prototype:** [Open FuelPass 2.0](https://fuelpass-2-0.shaffronwazny.workers.dev)
+- **GitHub repository:** [WAZNY-HS/FuelPass-2.0](https://github.com/WAZNY-HS/FuelPass-2.0)
+- **Hosting platform:** Cloudflare Workers
+
+Use the demo credentials below. Do not enter real NIC numbers, telephone numbers or vehicle records.
+
+## 8. Local Setup
+
+### Prerequisites
+
+- Git.
+- Node.js **22.13.0 or newer**, as declared in `package.json`.
+- pnpm matching the repository's `packageManager` field, currently **11.25.0**.
+
+No API keys, paid APIs or backend accounts are required to run the demonstration locally. Publishing your own Worker requires your own Cloudflare access.
+
+### Install and run
 
 ```bash
+git clone https://github.com/WAZNY-HS/FuelPass-2.0.git
+cd FuelPass-2.0
 corepack enable
 pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open the localhost URL printed by the development command. Production build: `pnpm build`. The included Vinext starter builds a React/TypeScript application for Cloudflare Workers. `pnpm start` runs the production output through local Wrangler. Sites hosting metadata belongs to the original project; create your own hosting project before deploying elsewhere. Do not reuse another account's project ID.
+If Corepack is unavailable, install or enable it for your Node environment, or install the pnpm version declared in `package.json`.
 
-## Demo credentials and walkthrough
+Open the **Local** URL printed in the terminal. The portable development script requests port **5173**; use the actual address reported by the running server. Keep the terminal open while using the local app.
 
-1. Motorist: request a new demo code if necessary, enter `123456` (expires after two minutes). No real telephone number or NIC is requested.
-2. Car `DEMO-CAR-01`: 30 L illustrative allocation, 12 L seeded usage, 18 L remaining. Bike `DEMO-BIKE-02`: 5 L available, no initial history.
-3. Open QR pass. The SVG encodes only `DEMO-PASS-001` or `DEMO-PASS-002`. These are not official passes.
-4. Attendant: Simulate scan loads the car pass; manual entry supports either demo pass. Enter 5 L, review, confirm. Receipt `TX-003` leaves the car with 13 L.
-5. Return to Motorist, select the car and view history; Administrator shows the same transaction. Inspect a row to see a derived demo audit trail.
-6. Reset demo restores the deterministic seed and signs out. Demo controls also expose network interruption and forced OTP expiry.
+### Build and run production output locally
 
-## Error checks
+```bash
+pnpm build
+pnpm start
+```
 
-Use 000000 for an invalid OTP; Expire demo code for expiry; WRONG for unknown pass; 0, -1, text, or more than two decimal places for invalid litres; 19 L on a fresh car for insufficient allowance. Toggle network interruption before confirming: no state change occurs, and restoring it allows retry. Check duplicate protection on a receipt resubmits the same transaction ID and must not deduct fuel twice.
+The build produces the application for Cloudflare Workers. `pnpm start` runs the generated output with local Wrangler using `dist/server/wrangler.json`. It is a local preview command, not a deployment command.
 
-## Architecture and boundaries
+Retain the repository's lockfile. If using starter installation helpers or the managed build path on Windows, note that those helpers use Bash; WSL or another suitable Bash environment may be needed. Any retained Sites metadata belongs to the original scaffold and should not be reused as another account's hosting identity.
 
-- `app/page.tsx`: role views, forms, navigation, state persistence, focus handling.
-- `lib/demo.ts`: deterministic seed, allowance calculations, validation and idempotent demo transaction function.
-- `lib/copy.ts`: English, Sinhala and Tamil core UI strings. Translations are drafts; supporting explanatory prose and audit descriptions retain English.
-- `app/globals.css`: shared colour, typography, spacing and responsive rules.
-- `components/ui`: reused accessible React primitives (button, tabs, switch).
-- `public/qr-*.svg`: real QR encoding of fictional demo identifiers.
-
-All role views share one in-memory state and one localStorage key in a single browser tab. This is not cross-device synchronization or a multi-user database. Multiple tabs are not a supported concurrent workflow. No real SMS, account verification, eligibility check, government integration, live quota, fuel pricing, station inventory, queues or fraud detection exists. Demo timestamps are deterministic scenario times, not the actual time of dispensing. Station filters inspect fictional records. The flagged seed is not evidence of fraud. Audit events are reconstructed from the transaction, not independent or immutable logs.
-
-Local validation and duplicate checking demonstrate intended behaviour; anyone can modify browser data. Production needs server-authoritative transactions, authentication and role authorization, official agreements/integrations, privacy review, real OTP delivery and rate limiting, idempotency and concurrent transaction handling, secure audit storage, monitoring, backups and accessibility/user testing. No offline dispensing is allowed in this prototype. Do not deploy it as an operational fuel system.
-
-Shared-device users should sign out and Reset demo. No real data should be entered. Browser storage failure falls back to memory with a visible warning. No user interviews or usability outcomes are claimed. See the submission pack for actual verification results, research, Figma limitations and team-review tasks.
-
-## Design
-
-Navy #102D43, teal #087F75, light background #F3F7FA, borders #D8E3E9; Arial and available Sinhala/Tamil system fallbacks; 48px primary controls; visible keyboard focus. Figma MCP access was blocked by the connected Starter plan limit. The submission includes an unexecuted editable Figma plugin import package; the native file is not a completed prototype.
-
-## Credits and AI use
-
-Prepared with ChatGPT assistance in research synthesis, design, implementation and documentation. The team must review translations, research currency, code and usability before presenting. Add genuine individual contributions and the genuine shared AI conversation URL to the submission. No individual roles are invented.
-
-## Repeat the logic checks
+### Developer checks
 
 ```bash
 node --experimental-strip-types tests/demo.test.mjs
@@ -64,4 +118,100 @@ pnpm exec tsc --noEmit
 pnpm build
 ```
 
-These are developer checks, not user research or WCAG certification. The demo test verifies balance arithmetic, invalid inputs, offline rejection and duplicate transaction behaviour.
+The regression script covers starting balances, invalid inputs, unknown passes, excess allowance, simulated interruption, a 5 L transaction, duplicate transaction IDs, exact-balance dispensing, persistence validation and input immutability.
+
+These checks support technical verification. They are not participant usability research or WCAG certification. Consult the submission verification record for dated results and test conditions.
+
+## 9. Demo Instructions
+
+### Starting data
+
+| Vehicle | Pass identifier | Illustrative allocation | Initially used | Initially remaining |
+| --- | --- | --- | --- | --- |
+| `DEMO-CAR-01` | `DEMO-PASS-001` | 30 L | 12 L | 18 L |
+| `DEMO-BIKE-02` | `DEMO-PASS-002` | 5 L | 0 L | 5 L |
+
+These allocations are demonstration values, not current government quotas.
+
+### Connected walkthrough
+
+1. Select **Motorist** and use OTP **`123456`**. The demo code expires after two minutes; choose **Send a new demo code** if needed.
+2. Select the car and check its 18 L remaining allowance. Open its QR pass and review transaction history. Select the bike to see empty history.
+3. Switch to **Attendant**. Choose **Simulate scan**, or manually enter `DEMO-PASS-001`.
+4. Enter **5 L**, review the proposed deduction and confirm once.
+5. Receipt **`TX-003`** shows **13 L** remaining. Return to the motorist's car view to see the updated allowance and record.
+6. Open **Administrator**. The sample totals now show **17 L** recorded and **3 transactions**. Inspect `TX-003` or the seeded flagged record.
+7. Choose **Reset demo** to restore the starting ledger and clear the motorist's signed-in state. Select Motorist if another role is still open.
+
+### Error and recovery demonstrations
+
+| Scenario | How to try it |
+| --- | --- |
+| Invalid OTP | Enter `000000` |
+| Expired OTP | In Help, choose **Expire demo code**, then try signing in; resend to recover |
+| Unrecognised pass | Enter `WRONG` |
+| Invalid litres | Enter `0`, `-1`, text or more than two decimal places |
+| Insufficient allowance | Request `19` L for the fresh car with 18 L remaining |
+| Interrupted connection | Enable the simulated interruption before confirmation; restore it and retry |
+| Duplicate submission | On a receipt, choose **Check duplicate protection**; the same transaction must not deduct twice |
+
+The interruption control is a simulation. It is not a real network-loss test or an offline dispensing system.
+
+## 10. Project Structure
+
+| Path | Responsibility |
+| --- | --- |
+| `app/page.tsx` | Role views, forms, navigation, shared state, persistence and focus handling |
+| `app/globals.css` | Colours, typography, spacing and responsive styling |
+| `lib/demo.ts` | Seed records, allowance calculations, validation and duplicate transaction handling |
+| `lib/copy.ts` | English, Sinhala and Tamil core interface strings |
+| `components/ui/` | Reusable UI primitives |
+| `public/qr-*.svg` | QR assets for fictional pass identifiers |
+| `tests/demo.test.mjs` | Transaction-logic regression checks |
+| `scripts/run-framework.mjs` | Development and build entry point |
+| `package.json` | Dependencies, package-manager version and available commands |
+
+All role views use one in-memory ledger and the localStorage key `group-c-fuel-demo-v1`. The browser retains valid sample transactions across reloads; motorist sign-in is not persisted. If storage is unavailable, the app falls back to memory and displays a warning.
+
+## 11. AI-Assisted Workflow
+
+Group C used AI tools, including ChatGPT, as productivity and support tools within the team's workflow. Assistance covered brainstorming and ideation, UX/UI exploration, requirement analysis, content refinement, technical guidance, code generation and improvement, debugging, and documentation.
+
+The team reviewed and refined AI suggestions, made project and design decisions, tested the prototype, worked with the source code, configured the development environment, used Git and GitHub, and deployed and verified the application. AI-assisted outputs formed part of this process alongside the team's practical work and review.
+
+This describes the collective workflow. Individual task ownership should be recorded from actual contributions. Team prototype checks are distinct from formal participant research; no interviews or participant usability findings are claimed here.
+
+## 12. Team Members
+
+**Programme:** Theory to Trade (T2T) Internship  
+**Group:** Group C
+
+| Team member | Student ID |
+| --- | --- |
+| Shaffron Wazny | T2T-B4-26-007 |
+| K.R.F. Nooha | T2T-B4-26-009 |
+| M.Y.F. Zahra | T2T-B4-26-012 |
+
+Student IDs are included here for assignment attribution. This README is public in the repository; the application interface does not display these IDs. No individual roles are assigned in this document.
+
+## 13. Current Prototype Limitations
+
+- **Demonstration data:** Allowances, stations, flags, receipts and timestamps are fictional or deterministic scenario values. They do not establish current quotas, prices, station availability or eligibility.
+- **Simulated identity and scanning:** No real SMS, identity verification, official account validation or camera-scanning workflow is implemented. QR assets encode only demo identifiers.
+- **Local state:** The ledger is browser-local. Concurrent tabs, multiple users and cross-device synchronization are not supported. Browser data can be modified by its user.
+- **Demo safeguards:** Local validation and duplicate checks illustrate expected behaviour; they are not production security or fraud prevention.
+- **Audit limits:** Audit text is reconstructed from transactions, not an independent, immutable or tamper-resistant event log. The seeded review flag is not evidence of fraud.
+- **Language and accessibility review:** Core controls support English, Sinhala and Tamil. Sinhala/Tamil translations remain drafts requiring fluent-speaker review; some supporting and audit prose remains English. Broader keyboard, screen-reader, device and accessibility testing is still needed.
+- **Scope:** Full citizen onboarding, real vehicle registration, a notifications centre, a station finder, quota transfer/request, payments and separate operator login are not implemented. Help explains demo registration using the supplied fictional vehicles.
+- **Figma status:** Native Figma creation and verification were blocked by the connected account's Starter-plan tool limit during preparation. The separately supplied editable import plugin has not been executed or verified in Figma and must not be represented as a completed native prototype.
+- **Research and validation:** No user interviews, formal participant usability results, official approvals or national service improvements are claimed. Refer to the submission materials for research sources, actual verification evidence and remaining review tasks.
+
+A production service would require server-authoritative transactions, authentication and role authorization, official integration agreements, privacy review, secure OTP delivery and rate limiting, concurrency and idempotency controls, reliable audit storage, monitoring, backups, and further accessibility and user testing. No offline dispensing is supported.
+
+On shared devices, sign out and reset the demo after use. Never use this prototype to store actual personal or fuel-entitlement information.
+
+## 14. Disclaimer
+
+This project is a **T2T Group C proposal prototype** prepared for an internship UI/UX assignment and discussion with the Director Board of the Ceylon Petroleum Corporation.
+
+It is **not the official Sri Lankan National Fuel Pass system**, is not connected to government systems, and has no claimed government endorsement. It does not authorize fuel collection or dispense real fuel. Use it for learning, review and demonstration only.
