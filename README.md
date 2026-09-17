@@ -42,6 +42,16 @@ Hosted on Cloudflare Workers.
 
 If the selected frame does not open, use the [file-level link](https://www.figma.com/design/4yt80npyfAzcukprbG33bf/Fuel-Pass-%E2%80%93-Editable-Figma-Prototype).
 
+## AI-assisted process
+https://chatgpt.com/share/6aaaaa77-edbc-83e9-8460-be85cb3d37f6
+
+## Additional AI threads
+https://share.gemini.google/9PE0KzGQ5wE8
+https://share.gemini.google/gpd2YDPGrdjZ
+https://share.gemini.google/PuMCgIqfkQJt
+https://share.gemini.google/3WNZi9BNweUj
+https://share.gemini.google/udomChXB3inC
+
 ## Medium Documentation 
 
 https://medium.com/@z8636138/fuelpass-2-0-designing-a-clearer-fuel-pass-experience-for-sri-lanka-4463b3101841?sharedUserId=z8636138
