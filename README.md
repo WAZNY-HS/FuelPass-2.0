@@ -42,6 +42,10 @@ Hosted on Cloudflare Workers.
 
 If the selected frame does not open, use the [file-level link](https://www.figma.com/design/4yt80npyfAzcukprbG33bf/Fuel-Pass-%E2%80%93-Editable-Figma-Prototype).
 
+## Medium Documentation 
+
+https://medium.com/@z8636138/fuelpass-2-0-designing-a-clearer-fuel-pass-experience-for-sri-lanka-4463b3101841?sharedUserId=z8636138
+
 ## Getting Started
 
 Requires Node.js **22.13.0 or newer** and **pnpm 11.25.0**, as specified in package.json. No API keys or paid APIs are required for the demo.
